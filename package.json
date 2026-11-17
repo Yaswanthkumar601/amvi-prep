@@ -1,0 +1,23 @@
+{
+  "name": "ap-break-ins-tool",
+  "version": "1.0.0",
+  "description": "APPSC Assistant Motor Vehicle Inspector (AMVI) Comprehensive Preparation & CBT Exam Portal",
+  "scripts": {
+    "start": "npx serve -p 8080 .",
+    "serve:python": "python3 -m http.server 8080",
+    "docker:build": "docker build -t appsc-amvi-portal:latest .",
+    "docker:run": "docker run -d -p 8080:80 --name amvi-portal appsc-amvi-portal:latest",
+    "docker:compose": "docker compose up -d"
+  },
+  "keywords": [
+    "appsc",
+    "amvi",
+    "assistant-motor-vehicle-inspector",
+    "transport-subordinate-service",
+    "cbrt-exam",
+    "andhra-pradesh"
+  ],
+  "author": "APPSC Aspirant Prep",
+  "license": "MIT"
+}
+

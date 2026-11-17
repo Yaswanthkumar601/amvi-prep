@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appsc-amvi-portal
+  namespace: default
+  labels:
+    app: appsc-amvi-portal
+    tier: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: appsc-amvi-portal
+  template:
+    metadata:
+      labels:
+        app: appsc-amvi-portal
+    spec:
+      containers:
+      - name: amvi-web
+        image: appsc-amvi-portal:latest  # Replace with your Docker registry image tag (e.g., your-registry/amvi-portal:v1.0.0)
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "250m"
+            memory: "256Mi"
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 15
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+
